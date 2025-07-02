@@ -15,27 +15,27 @@ datasource db {
 }
 
 model Users {
-  id Int @id @default(autoincrement())
+  id       Int        @id @default(autoincrement())
   fullname String
   username String
-  Password String
-  posts Posts[]
+  password String
+  posts    Posts[]
   comments Comments[]
 }
 
 model Posts {
-  id Int @id default(autoincrement())
-  userId Int 
+  id       Int        @id @default(autoincrement())
+  userId   Int
   postText String
-  user Users @relation(fields: [userId], references: [id])
+  user     Users      @relation(fields: [userId], references: [id])
   comments Comments[]
 }
 
-model Comment {
-  id           Int    @id @default(autoincrement())
-  commentText  String
-  userId       Int
-  postId       Int
-  user         Users   @relation(fields: [userId], references: [id])
-  post         Posts   @relation(fields: [postId], references: [id])
+model Comments {
+  id          Int    @id @default(autoincrement())
+  commentText String
+  userId      Int
+  postId      Int
+  user        Users  @relation(fields: [userId], references: [id])
+  post        Posts  @relation(fields: [postId], references: [id])
 }
