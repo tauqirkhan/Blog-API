@@ -24,11 +24,12 @@ model Users {
 }
 
 model Posts {
-  id       Int        @id @default(autoincrement())
-  userId   Int
-  postText String
-  user     Users      @relation(fields: [userId], references: [id])
-  comments Comments[]
+  id        Int        @id @default(autoincrement())
+  userId    Int
+  postTitle String
+  postBody  String
+  user      Users      @relation(fields: [userId], references: [id])
+  comments  Comments[]
 }
 
 model Comments {
