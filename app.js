@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("node:path");
-const indexRouter = require("./controllers/getIndexPage");
+const indexRouter = require("./routes/indexRouter");
 
 const PORT = 3000;
 
@@ -10,7 +10,7 @@ app.use(express.static(assetPath));
 
 app.use(express.urlencoded({ extended: false }));
 
-app.use("/", indexRouter);
+app.use(indexRouter);
 
 app.listen(PORT, () => {
   console.log(`App is live at - http://localhost:${PORT}/`);
