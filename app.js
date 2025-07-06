@@ -8,6 +8,7 @@ const PORT = 3000;
 const assetPath = path.join(__dirname, "public");
 app.use(express.static(assetPath));
 
+app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(indexRouter);
