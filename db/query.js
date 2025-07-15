@@ -12,4 +12,23 @@ const addPostToTable = async (postTitle, postBody, userId = 2) => {
   });
 };
 
-module.exports = { addPostToTable };
+const getAllBlogPostFromDB = async () => {
+  const postsArr = await prisma.posts.findMany();
+  return postsArr;
+};
+
+const getBlogPostByIdFromDB = async (postID) => {
+  const post = await prisma.posts.findUnique({
+    where: {
+      id: parseInt(postID),
+    },
+  });
+
+  return post;
+};
+
+module.exports = {
+  addPostToTable,
+  getAllBlogPostFromDB,
+  getBlogPostByIdFromDB,
+};

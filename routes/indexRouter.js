@@ -4,11 +4,12 @@ const addBlogPost = require("../controllers/addBlogPost");
 const getAllBlogPost = require("../controllers/getAllBlogPost");
 const updateBlogPostById = require("../controllers/updateBlogPostById");
 const deletePostById = require("../controllers/deletePostById");
+const getBlogPostById = require("../controllers/getBlogPostById");
 
 indexRouter.get("/posts", getAllBlogPost);
 indexRouter.post("/posts", addBlogPost);
 
-// indexRouter.get("/posts/:postId", geBlogPostById);
+indexRouter.get("/posts/:postId", getBlogPostById);
 indexRouter.put("/posts/:postId", updateBlogPostById);
 indexRouter.delete("/posts/:postId", deletePostById);
 

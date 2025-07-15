@@ -1,5 +1,9 @@
+const { getAllBlogPostFromDB } = require("../db/query");
+
 const getAllBlogPost = async (req, res) => {
-  return res.status(200).json({ message: "GET HTTP method on /post resource" });
+  const postsArray = await getAllBlogPostFromDB();
+
+  return res.status(200).json({ output: postsArray });
 };
 
 module.exports = getAllBlogPost;
