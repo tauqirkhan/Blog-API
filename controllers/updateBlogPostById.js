@@ -1,5 +1,10 @@
+const { updateBlogPost } = require("../db/query");
+
 const updateBlogPostById = async (req, res) => {
   const { postId } = req.params;
+  const { postTitle, postBody } = req.body;
+
+  await updateBlogPost(postId, postTitle, postBody);
 
   res
     .status(200)

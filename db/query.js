@@ -27,8 +27,30 @@ const getBlogPostByIdFromDB = async (postID) => {
   return post;
 };
 
+const updateBlogPost = async (postId, postTitle, postBody) => {
+  await prisma.posts.update({
+    where: {
+      id: parseInt(postId),
+    },
+    data: {
+      postTitle,
+      postBody,
+    },
+  });
+};
+
+const deletePostById = async (postId) => {
+  await prisma.posts.delete({
+    where: {
+      id: parseInt(postId),
+    },
+  });
+};
+
 module.exports = {
   addPostToTable,
   getAllBlogPostFromDB,
   getBlogPostByIdFromDB,
+  updateBlogPost,
+  deletePostById,
 };
